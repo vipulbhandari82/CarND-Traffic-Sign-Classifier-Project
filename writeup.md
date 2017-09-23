@@ -51,7 +51,7 @@ contrast ofthe image. Then we normalized the image so that the machine learns
 a distance from a zero mean as input. Standardization is pretty commmon in ML.
 
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
 
@@ -59,16 +59,58 @@ It is very similar to example in our studies of Lenet but I introduced a two lay
 of dropout near the end.
 
 Layer 1: Convolutional. Input = 32x32x3. Output = 28x28x6.
+
 Activation.
+
 Max Pooling. Input = 28x28x6. Output = 14x14x6.
+
 Convolutional. Output = 10x10x16.
+
 Activation.
+
 Max Pooling. Input = 10x10x16. Output = 5x5x16.
+
 Flatten. Input = 5x5x16. Output = 400.
+
 Droput Probability 0.75
+
 Fully Connected. Input = 400. Output = 120.
+
 Relu
+
 Dropout Probability 0.75
+
+
+I started out with BW images and reached around 90% validation accuracy but it 
+seemed to me I was discarding important information. After, reading the LEcun paper
+I implemented the equilization enhancement of images which took me to 94% validation accuracy.
+After enhancing the dataset with transformation to reduce overfitting and adding 
+some droput layers at the very end, I was able to go over 97.2% validation set accuracy.
+
+My final model results were:
+
+validation set accuracy of ? 97.2 percent
+
+test set accuracy of ? 95.9 percent
+
+### Test a Model on New Images
+
+I extracted some 5 images from the web, the first three were clear with bacground 
+greenery and my network was able to recognize those images. But, I choose two images
+from classes with few samples. Secondly, I made the background white. As I suspected, 
+the network failed on on these images.
+
+![alt text](https://github.com/vipulbhandari82/CarND-Traffic-Sign-Classifier-Project/blob/master/webset.png)
+
+![alt text](https://github.com/vipulbhandari82/CarND-Traffic-Sign-Classifier-Project/blob/master/webset2.png)
+
+As you can see the model had a accuracy of 60% and as can be seen by the softmax images,
+my NN is quite sure in first three images but fails in fourth images where the probabilties
+are not that high. Even though NN is sure in fifth image as per softmax probability butit 
+seemed to have learnt on shape circlerather than correct sign. So, as is evident some
+improvements to this network is needed.
+
+
 
 
 
