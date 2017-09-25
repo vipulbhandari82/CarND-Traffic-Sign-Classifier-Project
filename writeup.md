@@ -80,6 +80,11 @@ Relu
 
 Dropout Probability 0.75
 
+Epochs: I used 20 Epochs even though I think 10 may have been enough as the network quickly went to low validation error and remained there.
+Learning rate: Standard rate of 0.01 was used. Though I experimented with 0.1 and 0.001 but both caused issues.
+Optimiser: Adama optmizer was used as it uses veloccity and momentum and is one of the fastest on block.
+Batch size : I used a batch size of 32 and I had an old gpu at home with only 2GB memory. Anything above failed with a memory error.
+
 
 I started out with BW images and reached around 90% validation accuracy but it 
 seemed to me I was discarding important information. After, reading the LEcun paper
